@@ -1,21 +1,9 @@
 import 'reflect-metadata';
 import { injectable } from 'inversify';
-import { IWarrior } from './interfaces';
 import { iocContainer } from './ioc-container';
-
-@injectable()
-export class Katana {
-  public hit() {
-    return 'Katana: hit';
-  }
-}
-
-@injectable()
-export class Shuriken {
-  public throw() {
-    return 'Shuriken: throw';
-  }
-}
+import { IWarrior } from './interfaces/warrior';
+import { Katana } from './classes/katana';
+import { Shuriken } from './classes/shuriken';
 
 @injectable()
 export class Ninja implements IWarrior {
@@ -31,5 +19,3 @@ export class Ninja implements IWarrior {
 }
 
 iocContainer.bind(Ninja).toSelf();
-iocContainer.bind(Katana).toSelf();
-iocContainer.bind(Shuriken).toSelf();
